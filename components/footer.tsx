@@ -13,8 +13,8 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="px-6 pb-10 pt-4">
-      <div className="mx-auto max-w-[52rem]">
+    <footer className="px-6 lg:px-24 pb-10 pt-4">
+      <div className="mx-auto max-w-[1400px]">
         <Separator className="mb-8" />
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>

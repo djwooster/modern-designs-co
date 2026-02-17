@@ -24,8 +24,8 @@ const reasons = [
 
 export function WhyUs() {
   return (
-    <section className="py-20 px-6 bg-secondary/40">
-      <div className="mx-auto max-w-[52rem]">
+    <section className="py-20 px-6 lg:px-24 bg-secondary/40">
+      <div className="mx-auto max-w-[1400px]">
         {/* Centered header */}
         <FadeIn className="text-center mb-12">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-3">

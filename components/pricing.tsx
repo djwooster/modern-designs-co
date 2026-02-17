@@ -70,7 +70,18 @@ function FeatureList({ features }: { features: string[] }) {
             ease: "easeOut",
           }}
         >
-          <Check className="size-4 text-primary flex-shrink-0 mt-0.5" />
+          <motion.span
+            className="flex-shrink-0 mt-0.5"
+            initial={{ opacity: 0, scale: 0.3 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{
+              duration: 0.35,
+              delay: i * 0.05 + 0.2,
+              ease: [0.34, 1.56, 0.64, 1],
+            }}
+          >
+            <Check className="size-4 text-primary" />
+          </motion.span>
           <span className="text-sm text-muted-foreground leading-snug">
             {feature}
           </span>
@@ -82,8 +93,8 @@ function FeatureList({ features }: { features: string[] }) {
 
 export function Pricing() {
   return (
-    <section className="py-20 px-6">
-      <div className="mx-auto max-w-[52rem]">
+    <section className="py-20 px-6 lg:px-24">
+      <div className="mx-auto max-w-[1400px]">
         <FadeIn className="mb-12">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-3">
             Pricing

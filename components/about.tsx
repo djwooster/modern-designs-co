@@ -20,8 +20,8 @@ const values = [
 
 export function About() {
   return (
-    <section className="py-20 px-6 bg-secondary/40">
-      <div className="mx-auto max-w-[52rem]">
+    <section className="py-20 px-6 lg:px-24 bg-secondary/40">
+      <div className="mx-auto max-w-[1400px]">
         <FadeIn className="mb-10">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-3">
             About the studio

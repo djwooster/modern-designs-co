@@ -30,8 +30,8 @@ const projects = [
 
 export function Work() {
   return (
-    <section className="py-20 px-6">
-      <div className="mx-auto max-w-[52rem]">
+    <section className="py-20 px-6 lg:px-24">
+      <div className="mx-auto max-w-[1400px]">
         <FadeIn className="mb-12">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-3">
             Selected work

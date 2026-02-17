@@ -24,7 +24,7 @@ export function Nav() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
     >
-      <div className="mx-auto max-w-[52rem] px-6 h-16 flex items-center justify-between">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-24 h-16 flex items-center justify-between">
         <a href="#" className="font-semibold text-base tracking-tight">
           Modern Designs Co
         </a>

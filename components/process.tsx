@@ -110,8 +110,8 @@ export function Process() {
   return (
     <div>
       {/* ── Product Design ─────────────────────────────────────────── */}
-      <section className="py-20 px-6 bg-secondary/40">
-        <div className="mx-auto max-w-[52rem]">
+      <section className="py-20 px-6 lg:px-24 bg-secondary/40">
+        <div className="mx-auto max-w-[1400px]">
           <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
             {/* Text */}
             <FadeIn className="flex flex-col gap-8">
@@ -141,8 +141,8 @@ export function Process() {
       </section>
 
       {/* ── App Development ────────────────────────────────────────── */}
-      <section className="py-20 px-6">
-        <div className="mx-auto max-w-[52rem]">
+      <section className="py-20 px-6 lg:px-24">
+        <div className="mx-auto max-w-[1400px]">
           <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
             {/* Image */}
             <FadeIn delay={0.15} className="order-first">
