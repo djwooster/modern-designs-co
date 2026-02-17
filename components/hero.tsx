@@ -45,7 +45,7 @@ export function Hero() {
         }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.04 }}
-        transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
+        transition={{ duration: 3.5, delay: 0.4, ease: "easeOut" }}
       />
 
       {/* Comet streaks along grid lines */}
