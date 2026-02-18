@@ -25,6 +25,27 @@ const designSteps = [
   },
 ];
 
+const websiteSteps = [
+  {
+    n: "01",
+    name: "Discover Your Vision",
+    summary:
+      "We immerse ourselves in your brand — your story, your audience, the feeling you want to leave behind. Every color, typeface, and motion choice flows from who you are, not a template.",
+  },
+  {
+    n: "02",
+    name: "Craft & Animate",
+    summary:
+      "This is where the magic happens. We design every detail with intention: sweeping hero sections, choreographed scroll animations, and hover states so refined they feel inevitable. Luxury in every interaction.",
+  },
+  {
+    n: "03",
+    name: "Launch & Shine",
+    summary:
+      "We hand over a site you're genuinely proud to send to anyone — fast, flawless, and unmistakably yours. The kind of first impression that makes people say \"who made this?\"",
+  },
+];
+
 const devSteps = [
   {
     n: "01",
@@ -109,10 +130,47 @@ const ImagePlaceholder = ({ label }: { label: string }) => (
 export function Process() {
   return (
     <div>
-      {/* ── Product Design ─────────────────────────────────────────── */}
+      {/* ── Website Design ──────────────────────────────────────────── */}
       <section className="py-20 px-6 lg:px-24 bg-secondary/40">
         <div className="mx-auto max-w-[1400px]">
           <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
+            {/* Text */}
+            <FadeIn className="flex flex-col gap-8">
+              <div>
+                <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
+                  Website Design
+                </p>
+                <h2 className="text-3xl font-semibold tracking-tight leading-[1.15] mb-4">
+                  A site you&apos;re proud
+                  <br />
+                  to share with the world.
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  Every pixel, every transition, every scroll — crafted to
+                  elevate your brand and leave a lasting impression on everyone
+                  who visits.
+                </p>
+              </div>
+              <ScrollTrack steps={websiteSteps} />
+            </FadeIn>
+
+            {/* Image */}
+            <FadeIn delay={0.15} className="order-first sm:order-last">
+              <ImagePlaceholder label="Website design process screenshot" />
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Product Design ─────────────────────────────────────────── */}
+      <section className="py-20 px-6 lg:px-24">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
+            {/* Image */}
+            <FadeIn delay={0.15} className="order-first">
+              <ImagePlaceholder label="Product design process screenshot" />
+            </FadeIn>
+
             {/* Text */}
             <FadeIn className="flex flex-col gap-8">
               <div>
@@ -131,24 +189,14 @@ export function Process() {
               </div>
               <ScrollTrack steps={designSteps} />
             </FadeIn>
-
-            {/* Image */}
-            <FadeIn delay={0.15} className="order-first sm:order-last">
-              <ImagePlaceholder label="Product design process screenshot" />
-            </FadeIn>
           </div>
         </div>
       </section>
 
       {/* ── App Development ────────────────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-24">
+      <section className="py-20 px-6 lg:px-24 bg-secondary/40">
         <div className="mx-auto max-w-[1400px]">
           <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
-            {/* Image */}
-            <FadeIn delay={0.15} className="order-first">
-              <ImagePlaceholder label="App development process screenshot" />
-            </FadeIn>
-
             {/* Text */}
             <FadeIn className="flex flex-col gap-8">
               <div>
@@ -167,6 +215,11 @@ export function Process() {
                 </p>
               </div>
               <ScrollTrack steps={devSteps} />
+            </FadeIn>
+
+            {/* Image */}
+            <FadeIn delay={0.15} className="order-first sm:order-last">
+              <ImagePlaceholder label="App development process screenshot" />
             </FadeIn>
           </div>
         </div>

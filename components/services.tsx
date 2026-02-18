@@ -2,9 +2,23 @@
 
 import { motion } from "framer-motion";
 import { FadeIn, FadeInStagger, staggerItem } from "@/components/fade-in";
-import { Layers, Code2 } from "lucide-react";
+import { Layers, Code2, Globe } from "lucide-react";
 
 const services = [
+  {
+    icon: Globe,
+    animKey: "Globe" as const,
+    name: "Website Design",
+    tagline: "Your brand, beautifully online.",
+    description:
+      "A website that looks great and works even better. We craft custom sites built specifically for you — with smooth animations, intuitive layouts, and the features your visitors actually need.",
+    deliverables: [
+      "Beautiful animations & interactions",
+      "Custom-built for your brand",
+      "Contact forms & lead capture",
+      "Mobile-responsive & SEO-ready",
+    ],
+  },
   {
     icon: Layers,
     animKey: "Layers" as const,
@@ -45,6 +59,10 @@ const iconVariants = {
     initial: { y: 0, rotate: 0, scale: 1 },
     cardHover: { y: -3, rotate: 6, scale: 1.15 },
   },
+  Globe: {
+    initial: { y: 0, rotate: 0, scale: 1 },
+    cardHover: { y: -4, rotate: -5, scale: 1.2 },
+  },
 };
 
 const iconTransition = { type: "spring" as const, stiffness: 360, damping: 13 };
@@ -58,13 +76,13 @@ export function Services() {
             What we do
           </p>
           <h2 className="text-3xl font-semibold tracking-tight">
-            Everything you need to ship,
+            Everything you need,
             <br />
             nothing you don&apos;t.
           </h2>
         </FadeIn>
 
-        <FadeInStagger className="grid sm:grid-cols-2 gap-4">
+        <FadeInStagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service) => {
             const Icon = service.icon;
             const variants = iconVariants[service.animKey];
