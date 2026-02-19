@@ -134,8 +134,8 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.2, ease }}
         >
           From funded startups to growing local businesses — we design and
-          develop digital products that look great, feel effortless, and
-          drive real results.
+          develop digital products that are fully yours. No monthly fees,
+          no platform limits, no compromises.
         </motion.p>
 
         {/* CTAs */}

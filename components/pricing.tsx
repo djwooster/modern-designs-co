@@ -7,11 +7,31 @@ import { AnimatedCTA } from "@/components/animated-cta";
 import { Badge } from "@/components/ui/badge";
 import { Check } from "lucide-react";
 
+const websiteDesignPlan = {
+  name: "Website Design & Development",
+  tagline: "One-time build. Zero monthly fees. Yours forever.",
+  badge: null,
+  description:
+    "Stop renting your website from a platform that limits what you can do and charges you every single month. We build you something custom — something that actually belongs to you, reflects your brand perfectly, and makes people stop and look.",
+  cta: "Start a website project",
+  variant: "default" as const,
+  features: [
+    "A site that's 100% yours — no Squarespace or Wix fees, ever",
+    "Silky animations that make visitors feel something",
+    "Contact forms that send leads straight to your inbox",
+    "Loads in under a second — fast sites rank higher",
+    "Looks flawless on every phone, tablet, and screen",
+    "Built around your brand — not a template you're stuck with",
+    "Fully custom — no feature restrictions, no platform limits",
+    "You own the code completely, from day one",
+    "Easy to grow and update as your business evolves",
+  ],
+};
+
 const plans = [
   {
     name: "Product Design",
-    price: "$5,000",
-    cadence: "/ month",
+    tagline: "See every screen before we write a line of code.",
     badge: null,
     description:
       "For teams that need a dedicated design partner — someone who's in it with you, not just delivering files.",
@@ -31,8 +51,7 @@ const plans = [
   },
   {
     name: "Custom App Development",
-    price: "$12,000",
-    cadence: "starting at",
+    tagline: "You own the code. Completely and always.",
     badge: "Most popular",
     description:
       "For founders and businesses ready to ship a real product — not a template, not a prototype. Something you're proud to put your name on.",
@@ -100,16 +119,53 @@ export function Pricing() {
             Pricing
           </p>
           <h2 className="text-3xl font-semibold tracking-tight mb-3">
-            Straightforward pricing.
+            Invest once.
             <br />
-            No surprises.
+            Own it forever.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
-            Every project is different — these are starting points. We&apos;ll
-            give you a clear, fixed quote before anything begins.
+            No subscriptions. No platform fees. No limits. Every project is
+            scoped to your goals — we&apos;ll give you a clear, fixed quote
+            before anything begins.
           </p>
         </FadeIn>
 
+        {/* Website Design — full-width hero card */}
+        <FadeIn className="mb-5">
+          <motion.div
+            className="relative flex flex-col sm:flex-row rounded-2xl border border-primary/40 bg-card shadow-sm p-6 gap-8"
+          >
+            {/* Left: header + CTA */}
+            <div className="flex flex-col gap-6 sm:w-[340px] flex-shrink-0">
+              <div>
+                <p className="text-sm font-medium text-muted-foreground mb-3">
+                  {websiteDesignPlan.name}
+                </p>
+                <p className="text-2xl font-semibold tracking-tight leading-snug mb-3">
+                  {websiteDesignPlan.tagline}
+                </p>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {websiteDesignPlan.description}
+                </p>
+              </div>
+              <AnimatedCTA
+                href="#contact"
+                variant={websiteDesignPlan.variant}
+                size="default"
+                className="w-full justify-center font-medium"
+              >
+                {websiteDesignPlan.cta}
+              </AnimatedCTA>
+            </div>
+
+            {/* Right: features in 2-col grid */}
+            <div className="flex-1">
+              <FeatureList features={websiteDesignPlan.features} />
+            </div>
+          </motion.div>
+        </FadeIn>
+
+        {/* Product Design + Custom App — 2-col grid */}
         <FadeInStagger className="grid sm:grid-cols-2 gap-5" staggerDelay={0.1}>
           {plans.map((plan) => (
             <motion.div
@@ -134,14 +190,9 @@ export function Pricing() {
                 <p className="text-sm font-medium text-muted-foreground mb-3">
                   {plan.name}
                 </p>
-                <div className="flex items-baseline gap-1.5 mb-3">
-                  <span className="text-4xl font-semibold tracking-tight">
-                    {plan.price}
-                  </span>
-                  <span className="text-sm text-muted-foreground">
-                    {plan.cadence}
-                  </span>
-                </div>
+                <p className="text-xl font-semibold tracking-tight leading-snug mb-3">
+                  {plan.tagline}
+                </p>
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {plan.description}
                 </p>
@@ -166,7 +217,7 @@ export function Pricing() {
         {/* Bundled note */}
         <FadeIn delay={0.2} className="mt-8">
           <p className="text-sm text-center text-muted-foreground">
-            Need both design and development?{" "}
+            Need a website plus a custom app?{" "}
             <a
               href="#contact"
               className="font-medium text-foreground underline underline-offset-2 hover:text-primary transition-colors"

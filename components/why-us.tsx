@@ -8,7 +8,7 @@ const reasons = [
   {
     icon: Zap,
     heading: "Custom apps used to cost millions.",
-    body: "A decade ago, building a custom web app meant 12–18 months, a team of 20, and a budget most businesses couldn't justify. We build them in weeks — using modern tools, tight process, and none of the agency overhead.",
+    body: "A decade ago, building a custom web app meant 12–18 months, a team of 20, and a budget most businesses couldn't justify. Site builders like Squarespace filled the gap — but they come with monthly fees, feature restrictions, and a site you don't actually own. We build the real thing in weeks, using modern tools and none of the agency overhead.",
   },
   {
     icon: Eye,
@@ -18,7 +18,7 @@ const reasons = [
   {
     icon: Key,
     heading: "Everything belongs to you.",
-    body: "Figma files, source code, credentials, brand assets — all yours from day one. Nothing is locked in our systems. When the project ends, you walk away with full ownership and the freedom to do whatever you want with it.",
+    body: "Figma files, source code, credentials, brand assets — all yours from day one. No platform holding your content hostage, no monthly fee to keep the lights on. When the project ends, you walk away with everything and the freedom to do whatever you want with it.",
   },
 ];
 

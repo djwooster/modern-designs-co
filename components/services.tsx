@@ -11,10 +11,10 @@ const services = [
     name: "Website Design",
     tagline: "Your brand, beautifully online.",
     description:
-      "A website that looks great and works even better. We craft custom sites built specifically for you — with smooth animations, intuitive layouts, and the features your visitors actually need.",
+      "A website that's fully yours — no monthly platform fees, no template restrictions, nothing borrowed. Custom-built with smooth animations, intuitive layouts, and forms that turn visitors into real leads.",
     deliverables: [
+      "No platform fees, ever",
       "Beautiful animations & interactions",
-      "Custom-built for your brand",
       "Contact forms & lead capture",
       "Mobile-responsive & SEO-ready",
     ],
