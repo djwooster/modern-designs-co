@@ -4,66 +4,30 @@ import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { FadeIn } from "@/components/fade-in";
 
-const designSteps = [
+const steps = [
   {
     n: "01",
     name: "Discover & Align",
     summary:
-      "We learn your users, goals, and where the current experience breaks down. Sharp questions, honest conversations — we get aligned before touching any design tool.",
+      "Sharp questions, honest conversations. We learn your goals, your users, and what success actually looks like — before we touch a single design tool or write a line of code.",
   },
   {
     n: "02",
     name: "Design & Refine",
     summary:
-      "High-fidelity Figma screens you can actually react to. We present, you give feedback, we refine — until you're genuinely excited about what we've made together.",
+      "High-fidelity screens you can actually react to. We present, you give feedback, we refine — until you're genuinely excited about what we've built together.",
   },
   {
     n: "03",
-    name: "Handoff & Support",
+    name: "Build & Test",
     summary:
-      "Dev-ready specs, annotated files, and exported assets. We stay available through implementation so nothing gets lost when design meets code.",
-  },
-];
-
-const websiteSteps = [
-  {
-    n: "01",
-    name: "Discover Your Vision",
-    summary:
-      "We immerse ourselves in your brand — your story, your audience, the feeling you want to leave behind. Every color, typeface, and motion choice flows from who you are, not a template.",
+      "Clean code, two-week sprints, and a live demo at every milestone. No black boxes — you see real progress the whole way through.",
   },
   {
-    n: "02",
-    name: "Craft & Animate",
+    n: "04",
+    name: "Launch & Hand Over",
     summary:
-      "This is where the magic happens. We design every detail with intention: sweeping hero sections, choreographed scroll animations, and hover states so refined they feel inevitable. Luxury in every interaction.",
-  },
-  {
-    n: "03",
-    name: "Launch & Shine",
-    summary:
-      "We hand over a site you're genuinely proud to send to anyone — fast, flawless, and unmistakably yours. The kind of first impression that makes people say \"who made this?\"",
-  },
-];
-
-const devSteps = [
-  {
-    n: "01",
-    name: "Discover & Scope",
-    summary:
-      "A clear scope with real milestones you can hold us to. No vague deliverables, no surprise invoices — just an honest plan for what we're building and when it ships.",
-  },
-  {
-    n: "02",
-    name: "Design, Build & Test",
-    summary:
-      "We design the full interface before writing a line of code, then build in two-week sprints with live demos at each milestone. You see progress — always.",
-  },
-  {
-    n: "03",
-    name: "Launch & Handover",
-    summary:
-      "Deployed, documented, and fully yours — with 90 days of post-launch support included. Code, credentials, everything: handed over completely.",
+      "Deployed, documented, and fully yours. Code, credentials, assets — everything handed over completely, with 90 days of post-launch support included.",
   },
 ];
 
@@ -129,101 +93,35 @@ const ImagePlaceholder = ({ label }: { label: string }) => (
 
 export function Process() {
   return (
-    <div>
-      {/* ── Website Design ──────────────────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-24 bg-secondary/40">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
-            {/* Text */}
-            <FadeIn className="flex flex-col gap-8">
-              <div>
-                <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
-                  Website Design
-                </p>
-                <h2 className="text-3xl font-semibold tracking-tight leading-[1.15] mb-4">
-                  A site you&apos;re proud
-                  <br />
-                  to share with the world.
-                </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  Every pixel, every transition, every scroll — crafted to
-                  elevate your brand and leave a lasting impression on everyone
-                  who visits.
-                </p>
-              </div>
-              <ScrollTrack steps={websiteSteps} />
-            </FadeIn>
+    <section className="py-20 px-6 lg:px-24 bg-secondary/40">
+      <div className="mx-auto max-w-[1400px]">
+        <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
+          {/* Text */}
+          <FadeIn className="flex flex-col gap-8">
+            <div>
+              <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
+                How we work
+              </p>
+              <h2 className="text-3xl font-semibold tracking-tight leading-[1.15] mb-4">
+                A process built for
+                <br />
+                clarity and momentum.
+              </h2>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                Whether it&apos;s a website, a product, or a full application —
+                the process is the same. No surprises, no black boxes. Just
+                steady progress you can see.
+              </p>
+            </div>
+            <ScrollTrack steps={steps} />
+          </FadeIn>
 
-            {/* Image */}
-            <FadeIn delay={0.15} className="order-first sm:order-last">
-              <ImagePlaceholder label="Website design process screenshot" />
-            </FadeIn>
-          </div>
+          {/* Image */}
+          <FadeIn delay={0.15} className="order-first sm:order-last">
+            <ImagePlaceholder label="Process screenshot" />
+          </FadeIn>
         </div>
-      </section>
-
-      {/* ── Product Design ─────────────────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-24">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
-            {/* Image */}
-            <FadeIn delay={0.15} className="order-first">
-              <ImagePlaceholder label="Product design process screenshot" />
-            </FadeIn>
-
-            {/* Text */}
-            <FadeIn className="flex flex-col gap-8">
-              <div>
-                <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
-                  Product Design
-                </p>
-                <h2 className="text-3xl font-semibold tracking-tight leading-[1.15] mb-4">
-                  From fuzzy idea to
-                  <br />
-                  polished interface.
-                </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  A collaborative process where you always know what&apos;s coming
-                  next — and nothing ships until you love it.
-                </p>
-              </div>
-              <ScrollTrack steps={designSteps} />
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* ── App Development ────────────────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-24 bg-secondary/40">
-        <div className="mx-auto max-w-[1400px]">
-          <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
-            {/* Text */}
-            <FadeIn className="flex flex-col gap-8">
-              <div>
-                <p className="text-xs font-medium tracking-widest uppercase text-primary mb-3">
-                  App Development
-                </p>
-                <h2 className="text-3xl font-semibold tracking-tight leading-[1.15] mb-4">
-                  From whiteboard sketch
-                  <br />
-                  to live product.
-                </h2>
-                <p className="text-sm text-muted-foreground leading-relaxed">
-                  A structured build with no surprises — you know exactly
-                  what&apos;s being built, when it ships, and what you&apos;re
-                  paying for.
-                </p>
-              </div>
-              <ScrollTrack steps={devSteps} />
-            </FadeIn>
-
-            {/* Image */}
-            <FadeIn delay={0.15} className="order-first sm:order-last">
-              <ImagePlaceholder label="App development process screenshot" />
-            </FadeIn>
-          </div>
-        </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 }
