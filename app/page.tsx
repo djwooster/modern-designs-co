@@ -19,14 +19,14 @@ export default function Home() {
       <div id="why-us">
         <WhyUs />
       </div>
+      <div id="work">
+        <Work />
+      </div>
       <div id="services">
         <Services />
       </div>
       <div id="process">
         <Process />
-      </div>
-      <div id="work">
-        <Work />
       </div>
       <div id="pricing">
         <Pricing />
