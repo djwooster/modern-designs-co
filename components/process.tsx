@@ -4,7 +4,9 @@ import { useRef } from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { FadeIn } from "@/components/fade-in";
 
-const steps = [
+type Step = { n: string; name: string; summary: string };
+
+const steps: Step[] = [
   {
     n: "01",
     name: "Discover & Align",
@@ -31,7 +33,7 @@ const steps = [
   },
 ];
 
-function ScrollTrack({ steps }: { steps: typeof steps }) {
+function ScrollTrack({ steps }: { steps: Step[] }) {
   const ref = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
