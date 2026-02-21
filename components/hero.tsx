@@ -110,7 +110,7 @@ export function Hero() {
             variant="secondary"
             className="mb-6 text-xs font-medium tracking-wide rounded-full px-3 py-1"
           >
-            Boutique Design & Development Studio
+            Boutique Web Design & Development Studio
           </Badge>
         </motion.div>
 
@@ -121,20 +121,21 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease }}
         >
-          We build awesome products
+          You deserve a website worth 
           <br />
-          <span className="text-primary">people love to use.</span>
+          <span className="text-primary">bragging about.</span>
         </motion.h1>
 
         {/* Sub */}
         <motion.p
-          className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-lg"
+          className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
         >
-          From funded startups to growing local businesses — we design and
-          develop digital products that are fully yours. No monthly fees,
+          Your business deserves a digital presence that feels luxurious, moves beautifully, 
+          and launches faster than you thought possible — so you can stop settling and start winning.
+          You get a completely custom website or application that is fully yours. No monthly fees,
           no platform limits, no compromises.
         </motion.p>
 
