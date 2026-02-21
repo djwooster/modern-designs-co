@@ -37,9 +37,7 @@ export function Work() {
             Selected work
           </p>
           <h2 className="text-3xl font-semibold tracking-tight">
-            We let the work
-            <br />
-            speak for itself.
+            We let the work speak for itself.
           </h2>
         </FadeIn>
 
