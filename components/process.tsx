@@ -31,7 +31,7 @@ const steps = [
   },
 ];
 
-function ScrollTrack({ steps }: { steps: typeof designSteps }) {
+function ScrollTrack({ steps }: { steps: typeof steps }) {
   const ref = useRef<HTMLOListElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
