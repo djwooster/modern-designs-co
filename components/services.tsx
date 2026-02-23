@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { FadeIn } from "@/components/fade-in";
 import {
   PhoneOff,
@@ -13,13 +13,16 @@ import {
   type LucideIcon,
 } from "lucide-react";
 
+
+// ─── Types & data ──────────────────────────────────────────────────────────────
+
 type Feature = {
   icon: LucideIcon;
   label: string;
   detail: string;
 };
 
-const features: Feature[] = [
+const webDesign: Feature[] = [
   {
     icon: PhoneOff,
     label: "Skip the calls.",
@@ -38,6 +41,9 @@ const features: Feature[] = [
     detail:
       "Every hover state, every transition considered. The kind of site clients screenshot and send to their friends asking who made it.",
   },
+];
+
+const productDesign: Feature[] = [
   {
     icon: Code2,
     label: "Figma to browser.",
@@ -58,79 +64,28 @@ const features: Feature[] = [
   },
 ];
 
-function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+// ─── Feature item (static) ─────────────────────────────────────────────────────
+
+function FeatureItem({ feature }: { feature: Feature }) {
   const Icon = feature.icon;
-
   return (
-    <motion.div
-      ref={ref}
-      className="flex flex-col gap-4"
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{
-        duration: 0.5,
-        delay: (index % 3) * 0.1,
-        ease: [0.21, 0.47, 0.32, 0.98],
-      }}
-    >
-      {/* Icon block */}
-      <motion.div
-        className="w-[15%] aspect-4/4 rounded-lg  bg-primary/5 border border-primary/10 flex items-center justify-center"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : {}}
-        transition={{
-          duration: 0.5,
-          delay: (index % 3) * 0.1,
-          ease: [0.21, 0.47, 0.32, 0.98],
-        }}
-      >
-        {/* Icon — clip-path draw reveal */}
-        <motion.div
-          className="overflow-hidden"
-          initial={{ clipPath: "inset(0 100% 0 0)" }}
-          animate={isInView ? { clipPath: "inset(0 0% 0 0)" } : {}}
-          transition={{
-            duration: 0.55,
-            delay: (index % 3) * 0.1 + 0.2,
-            ease: [0.4, 0, 0.2, 1],
-          }}
-        >
-          <Icon className="size-8 text-foreground" strokeWidth={1.25} />
-        </motion.div>
-      </motion.div>
-
-      {/* Label */}
-      <motion.p
-        className="text-base font-semibold leading-snug"
-        initial={{ opacity: 0, y: 6 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{
-          duration: 0.4,
-          delay: (index % 3) * 0.1 + 0.15,
-          ease: "easeOut",
-        }}
-      >
-        {feature.label}
-      </motion.p>
-
-      {/* Detail */}
-      <motion.p
-        className="text-sm text-muted-foreground leading-relaxed"
-        initial={{ opacity: 0, y: 6 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
-        transition={{
-          duration: 0.4,
-          delay: (index % 3) * 0.1 + 0.25,
-          ease: "easeOut",
-        }}
-      >
-        {feature.detail}
-      </motion.p>
-    </motion.div>
+    <div className="flex gap-4 items-start py-3 px-1">
+      <div className="size-7 rounded-lg bg-muted/60 border border-border/60 flex items-center justify-center flex-shrink-0 mt-0.5">
+        <Icon className="size-3.5 text-muted-foreground" strokeWidth={1.5} />
+      </div>
+      <div>
+        <p className="text-sm font-semibold leading-snug mb-1">
+          {feature.label}
+        </p>
+        <p className="text-xs text-muted-foreground leading-relaxed">
+          {feature.detail}
+        </p>
+      </div>
+    </div>
   );
 }
+
+// ─── Ornamental brushstroke ────────────────────────────────────────────────────
 
 function OrnamentalBrushstroke({ isInView }: { isInView: boolean }) {
   return (
@@ -140,14 +95,14 @@ function OrnamentalBrushstroke({ isInView }: { isInView: boolean }) {
       preserveAspectRatio="xMinYMid meet"
       aria-hidden="true"
     >
-      {/* ── Diamond crosshair ornament ── */}
       <motion.g
         style={{ transformOrigin: "40px 30px" }}
         initial={{ opacity: 0, scale: 0.55 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.55 }}
+        animate={
+          isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.55 }
+        }
         transition={{ duration: 0.9, ease: [0.34, 1.4, 0.64, 1], delay: 0.1 }}
       >
-        {/* Outer diamond */}
         <path
           d="M 40,17 L 53,30 L 40,43 L 27,30 Z"
           fill="none"
@@ -155,30 +110,22 @@ function OrnamentalBrushstroke({ isInView }: { isInView: boolean }) {
           strokeWidth="0.6"
           style={{ opacity: 0.48 }}
         />
-        {/* Inner filled diamond */}
         <path
           d="M 40,23 L 47,30 L 40,37 L 33,30 Z"
           fill="#C8941A"
           style={{ opacity: 0.28 }}
         />
-        {/* Left crosshair arm */}
         <line x1="14" y1="30" x2="27" y2="30" stroke="#C8941A" strokeWidth="0.55" style={{ opacity: 0.35 }} />
-        {/* Top crosshair arm */}
-        <line x1="40" y1="6"  x2="40" y2="17" stroke="#C8941A" strokeWidth="0.55" style={{ opacity: 0.28 }} />
-        {/* Bottom crosshair arm */}
+        <line x1="40" y1="6" x2="40" y2="17" stroke="#C8941A" strokeWidth="0.55" style={{ opacity: 0.28 }} />
         <line x1="40" y1="43" x2="40" y2="54" stroke="#C8941A" strokeWidth="0.55" style={{ opacity: 0.28 }} />
-        {/* Terminal dots */}
         <circle cx="12" cy="30" r="1.4" fill="#C8941A" style={{ opacity: 0.38 }} />
-        <circle cx="40" cy="4"  r="1.1" fill="#C8941A" style={{ opacity: 0.26 }} />
+        <circle cx="40" cy="4" r="1.1" fill="#C8941A" style={{ opacity: 0.26 }} />
         <circle cx="40" cy="56" r="1.1" fill="#C8941A" style={{ opacity: 0.26 }} />
-        {/* Diagonal corner accent dots */}
         <circle cx="31" cy="21" r="0.75" fill="#C8941A" style={{ opacity: 0.24 }} />
         <circle cx="49" cy="21" r="0.75" fill="#C8941A" style={{ opacity: 0.24 }} />
         <circle cx="49" cy="39" r="0.75" fill="#C8941A" style={{ opacity: 0.24 }} />
         <circle cx="31" cy="39" r="0.75" fill="#C8941A" style={{ opacity: 0.24 }} />
       </motion.g>
-
-      {/* ── Primary rule — draws out from ornament ── */}
       <motion.path
         d="M 54,30 L 1440,30"
         fill="none"
@@ -186,11 +133,13 @@ function OrnamentalBrushstroke({ isInView }: { isInView: boolean }) {
         strokeWidth="0.65"
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={isInView ? { pathLength: 1, opacity: 0.26 } : { pathLength: 0, opacity: 0 }}
+        animate={
+          isInView
+            ? { pathLength: 1, opacity: 0.26 }
+            : { pathLength: 0, opacity: 0 }
+        }
         transition={{ duration: 2.2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.55 }}
       />
-
-      {/* ── Hairline rule above — offset 2.5px, slightly brighter ── */}
       <motion.path
         d="M 54,27.5 L 1440,27.5"
         fill="none"
@@ -198,19 +147,31 @@ function OrnamentalBrushstroke({ isInView }: { isInView: boolean }) {
         strokeWidth="0.35"
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}
-        animate={isInView ? { pathLength: 1, opacity: 0.14 } : { pathLength: 0, opacity: 0 }}
+        animate={
+          isInView
+            ? { pathLength: 1, opacity: 0.14 }
+            : { pathLength: 0, opacity: 0 }
+        }
         transition={{ duration: 1.9, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.72 }}
       />
     </motion.svg>
   );
 }
 
+// ─── Main export ───────────────────────────────────────────────────────────────
+
 export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
+  const productGroupRef = useRef<HTMLDivElement>(null);
+  const isProductInView = useInView(productGroupRef, {
+    once: false,
+    margin: "-30% 0px -30% 0px",
+  });
+
   return (
-    <section ref={sectionRef} className="relative py-20 px-6 lg:px-24 overflow-hidden">
+    <section ref={sectionRef} className="relative py-20 px-6 lg:px-24">
       <OrnamentalBrushstroke isInView={isInView} />
       <div className="mx-auto max-w-[1400px]">
         {/* Header */}
@@ -224,17 +185,96 @@ export function Services() {
             Fast.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed">
-            Premium design with lightning fast execution — delivering you exactly 
-            what you're envisioning, on a quick timeline that keeps your project 
+            Premium design with lightning fast execution — delivering you exactly
+            what you&apos;re envisioning, on a quick timeline that keeps your project
             moving forward. Design you can count on, when you need it.
           </p>
         </FadeIn>
 
-        {/* 3-col feature grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-          {features.map((feature, i) => (
-            <FeatureCard key={feature.label} feature={feature} index={i} />
-          ))}
+        {/* Body */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
+          {/* Left: feature list */}
+          <div>
+            <div className="lg:sticky lg:top-20 flex flex-col">
+            {/* Website Design group */}
+            <div className="pb-8">
+              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight mb-2">
+                Website Design
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                Conversion-focused websites built fast — custom code, polished
+                craft, and a live URL in under two weeks.
+              </p>
+              <div className="flex flex-col">
+                {webDesign.map((f) => (
+                  <FeatureItem key={f.label} feature={f} />
+                ))}
+              </div>
+            </div>
+
+            {/* Divider */}
+            <div className="h-px bg-border/60 mb-8" />
+
+            {/* Product Design group */}
+            {/* <div ref={productGroupRef}>
+              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight mb-2">
+                Product Design
+              </h3>
+              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                Design systems and Figma-to-browser handoffs that give your
+                engineers everything they need to ship on day one.
+              </p>
+              <div className="flex flex-col">
+                {productDesign.map((f) => (
+                  <FeatureItem key={f.label} feature={f} />
+                ))}
+              </div>
+            </div> */}
+            </div>{/* end sticky wrapper */}
+          </div>{/* end left grid item */}
+
+          {/* Right: sticky image panel */}
+          <div className="hidden lg:block">
+            <div className="sticky top-20">
+              <div className="rounded-2xl border border-border overflow-hidden shadow-2xl shadow-black/10 bg-muted/20 aspect-[3/4]">
+                <AnimatePresence mode="wait">
+                  {!isProductInView ? (
+                    <motion.div
+                      key="website"
+                      className="w-full h-full"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80"
+                        alt="Website design example"
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="product"
+                      className="w-full h-full"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "easeInOut" }}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80"
+                        alt="Product design example"
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
