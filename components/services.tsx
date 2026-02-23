@@ -77,7 +77,7 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
     >
       {/* Icon block */}
       <motion.div
-        className="w-full aspect-[4/3] rounded-2xl bg-primary/5 border border-primary/10 flex items-center justify-center"
+        className="w-[15%] aspect-4/4 rounded-lg  bg-primary/5 border border-primary/10 flex items-center justify-center"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={isInView ? { opacity: 1, scale: 1 } : {}}
         transition={{
@@ -137,18 +137,19 @@ export function Services() {
     <section className="py-20 px-6 lg:px-24">
       <div className="mx-auto max-w-[1400px]">
         {/* Header */}
-        <FadeIn className="mb-16 text-center max-w-2xl mx-auto">
+        <FadeIn className="mb-16 max-w-2xl">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-4">
             What we do
           </p>
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight mb-4">
-            Two disciplines.
+            We deliver what you need.
             <br />
-            One team.
+            Fast.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed">
-            Website design and product design — done properly, delivered fast,
-            with no back-and-forth between vendors.
+            Premium design with lightning fast execution — delivering you exactly 
+            what you're envisioning, on a quick timeline that keeps your project 
+            moving forward. Design you can count on, when you need it.
           </p>
         </FadeIn>
 
