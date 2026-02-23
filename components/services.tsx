@@ -132,9 +132,86 @@ function FeatureCard({ feature, index }: { feature: Feature; index: number }) {
   );
 }
 
-export function Services() {
+function OrnamentalBrushstroke({ isInView }: { isInView: boolean }) {
   return (
-    <section className="py-20 px-6 lg:px-24">
+    <motion.svg
+      className="absolute top-0 left-0 w-full pointer-events-none select-none"
+      viewBox="0 0 1440 60"
+      preserveAspectRatio="xMinYMid meet"
+      aria-hidden="true"
+    >
+      {/* ── Diamond crosshair ornament ── */}
+      <motion.g
+        style={{ transformOrigin: "40px 30px" }}
+        initial={{ opacity: 0, scale: 0.55 }}
+        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.55 }}
+        transition={{ duration: 0.9, ease: [0.34, 1.4, 0.64, 1], delay: 0.1 }}
+      >
+        {/* Outer diamond */}
+        <path
+          d="M 40,17 L 53,30 L 40,43 L 27,30 Z"
+          fill="none"
+          stroke="#C8941A"
+          strokeWidth="0.6"
+          style={{ opacity: 0.48 }}
+        />
+        {/* Inner filled diamond */}
+        <path
+          d="M 40,23 L 47,30 L 40,37 L 33,30 Z"
+          fill="#C8941A"
+          style={{ opacity: 0.28 }}
+        />
+        {/* Left crosshair arm */}
+        <line x1="14" y1="30" x2="27" y2="30" stroke="#C8941A" strokeWidth="0.55" style={{ opacity: 0.35 }} />
+        {/* Top crosshair arm */}
+        <line x1="40" y1="6"  x2="40" y2="17" stroke="#C8941A" strokeWidth="0.55" style={{ opacity: 0.28 }} />
+        {/* Bottom crosshair arm */}
+        <line x1="40" y1="43" x2="40" y2="54" stroke="#C8941A" strokeWidth="0.55" style={{ opacity: 0.28 }} />
+        {/* Terminal dots */}
+        <circle cx="12" cy="30" r="1.4" fill="#C8941A" style={{ opacity: 0.38 }} />
+        <circle cx="40" cy="4"  r="1.1" fill="#C8941A" style={{ opacity: 0.26 }} />
+        <circle cx="40" cy="56" r="1.1" fill="#C8941A" style={{ opacity: 0.26 }} />
+        {/* Diagonal corner accent dots */}
+        <circle cx="31" cy="21" r="0.75" fill="#C8941A" style={{ opacity: 0.24 }} />
+        <circle cx="49" cy="21" r="0.75" fill="#C8941A" style={{ opacity: 0.24 }} />
+        <circle cx="49" cy="39" r="0.75" fill="#C8941A" style={{ opacity: 0.24 }} />
+        <circle cx="31" cy="39" r="0.75" fill="#C8941A" style={{ opacity: 0.24 }} />
+      </motion.g>
+
+      {/* ── Primary rule — draws out from ornament ── */}
+      <motion.path
+        d="M 54,30 L 1440,30"
+        fill="none"
+        stroke="#C8941A"
+        strokeWidth="0.65"
+        strokeLinecap="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={isInView ? { pathLength: 1, opacity: 0.26 } : { pathLength: 0, opacity: 0 }}
+        transition={{ duration: 2.2, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.55 }}
+      />
+
+      {/* ── Hairline rule above — offset 2.5px, slightly brighter ── */}
+      <motion.path
+        d="M 54,27.5 L 1440,27.5"
+        fill="none"
+        stroke="#D4A827"
+        strokeWidth="0.35"
+        strokeLinecap="round"
+        initial={{ pathLength: 0, opacity: 0 }}
+        animate={isInView ? { pathLength: 1, opacity: 0.14 } : { pathLength: 0, opacity: 0 }}
+        transition={{ duration: 1.9, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.72 }}
+      />
+    </motion.svg>
+  );
+}
+
+export function Services() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+
+  return (
+    <section ref={sectionRef} className="relative py-20 px-6 lg:px-24 overflow-hidden">
+      <OrnamentalBrushstroke isInView={isInView} />
       <div className="mx-auto max-w-[1400px]">
         {/* Header */}
         <FadeIn className="mb-16 max-w-2xl">
