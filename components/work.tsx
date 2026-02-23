@@ -6,25 +6,31 @@ import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
-    name: "Project One",
-    type: "Product Design · Web App",
+    name: "We Love Laguna",
+    type: "Website Redesign · Branding",
     description:
-      "A placeholder for your first featured case study. Drop in a real screenshot and description here.",
+      "A redesign for a blog in Laguna Beach to update the brand and website.",
     gradient: "from-orange-100 to-amber-100",
+    src: "/project1.png",
+    url: "we-love-laguna-ozjk.vercel.app",
   },
   {
-    name: "Project Two",
-    type: "Web Development · Marketing Site",
+    name: "Summit B&B",
+    type: "Website Design · Marketing Site",
     description:
-      "Another standout project. Replace with a real screenshot and a one-sentence outcome.",
+      "Redesigning a marketing site for a short-term property management company.",
     gradient: "from-stone-100 to-orange-50",
+    src: "/project2.png",
+    url: "summit-bnb.vercel.app",
   },
   {
-    name: "Project Three",
-    type: "Full-Stack · SaaS",
+    name: "Flower Bunny",
+    type: "Website Design · Portfolio",
     description:
-      "A third featured work. Each card can link to a detailed case study page.",
+      "An elegant, luxury portfolio website for a high-end floral designer.",
     gradient: "from-amber-50 to-stone-100",
+    src: "/project3.png",
+    url: "https://flower-bunny-website.vercel.app/",
   },
 ];
 
@@ -34,7 +40,7 @@ export function Work() {
       <div className="mx-auto max-w-[1400px]">
         <FadeIn className="mb-12">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-3">
-            Selected work
+            Recent work
           </p>
           <h2 className="text-3xl font-semibold tracking-tight">
             We let the work speak for itself.
@@ -43,28 +49,21 @@ export function Work() {
 
         <FadeInStagger className="flex flex-col gap-4">
           {projects.map((project) => (
-            <motion.div
+            <motion.a
               key={project.name}
+              href={project.url.startsWith("http") ? project.url : `https://${project.url}`}
+              target="_blank"
+              rel="noopener noreferrer"
               variants={staggerItem}
-              className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-colors duration-300 cursor-pointer"
+              className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-colors duration-300 cursor-pointer block"
             >
-              {/* Placeholder image area */}
-              <div
-                className={`aspect-[16/7] bg-gradient-to-br ${project.gradient} flex items-center justify-center relative`}
-              >
-                <div className="flex flex-col items-center gap-2 text-stone-400">
-                  <div className="size-10 rounded-xl bg-white/60 flex items-center justify-center">
-                    <svg
-                      viewBox="0 0 24 24"
-                      className="size-5 fill-none stroke-current stroke-[1.5]"
-                    >
-                      <rect x="3" y="3" width="18" height="18" rx="2" />
-                      <circle cx="8.5" cy="8.5" r="1.5" />
-                      <path d="M21 15l-5-5L5 21" />
-                    </svg>
-                  </div>
-                  <p className="text-xs font-medium">Replace with screenshot</p>
-                </div>
+              {/* Project image */}
+              <div className={`aspect-[16/7] bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+                <img
+                  src={project.src}
+                  alt={project.name}
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Card body */}
@@ -80,7 +79,7 @@ export function Work() {
                 </div>
                 <ArrowUpRight className="size-4 text-muted-foreground group-hover:text-primary flex-shrink-0 mt-0.5 transition-colors" />
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </FadeInStagger>
 
