@@ -2,7 +2,36 @@
 
 import { motion } from "framer-motion";
 import { FadeIn, FadeInStagger, staggerItem } from "@/components/fade-in";
-import { Layers, Code2, Globe } from "lucide-react";
+import {
+  Globe,
+  Layers,
+  PhoneOff,
+  Rocket,
+  Sparkles,
+  Code2,
+  LayoutGrid,
+  BadgeCheck,
+} from "lucide-react";
+
+const featureContainerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.15 },
+  },
+  cardHover: {
+    transition: { staggerChildren: 0.12 },
+  },
+};
+
+const featureItemVariants = {
+  hidden: { opacity: 0, y: 6 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" as const },
+  },
+  cardHover: { opacity: 1, y: 0 },
+};
 
 const services = [
   {
@@ -11,12 +40,23 @@ const services = [
     name: "Website Design",
     tagline: "Your brand, beautifully online.",
     description:
-      "A website that's fully yours — no monthly platform fees, no template restrictions, nothing borrowed. Custom-built with smooth animations, intuitive layouts, and forms that turn visitors into real leads.",
-    deliverables: [
-      "No platform fees, ever",
-      "Beautiful animations & interactions",
-      "Contact forms & lead capture",
-      "Mobile-responsive & SEO-ready",
+      "You can feel the difference when you visit a website that's built with smooth interactions, thoughtful details, and intuitive experience that make you excited to show it off. That's what we build for you.",
+    features: [
+      {
+        icon: PhoneOff,
+        label: "Skip the calls",
+        detail: "async-first, we move at your pace",
+      },
+      {
+        icon: Rocket,
+        label: "Live in 1–2 weeks",
+        detail: "from kickoff to shipped",
+      },
+      {
+        icon: Sparkles,
+        label: "Craft worth showing off",
+        detail: "animations and details that feel alive",
+      },
     ],
   },
   {
@@ -26,38 +66,30 @@ const services = [
     tagline: "Beautiful interfaces that convert.",
     description:
       "Beautiful interfaces aren't just about aesthetics — they reduce churn, build trust, and make your product feel inevitable. We design with your users and business goals at the center.",
-    deliverables: [
-      "UX research & flows",
-      "Figma wireframes & prototypes",
-      "Design systems",
-      "Handoff-ready specs",
-    ],
-  },
-  {
-    icon: Code2,
-    animKey: "Code2" as const,
-    name: "Web Development",
-    tagline: "Fast, clean, built to scale.",
-    description:
-      "We write code that's a joy to work with — fast, accessible, and built for the long run. No bloat, no shortcuts. Just clean Next.js applications your team can actually maintain.",
-    deliverables: [
-      "Next.js & TypeScript",
-      "Full-stack & API integration",
-      "Vercel deployments",
-      "Performance optimization",
+    features: [
+      {
+        icon: Code2,
+        label: "Figma to browser",
+        detail: "React prototypes, not just static comps",
+      },
+      {
+        icon: LayoutGrid,
+        label: "Systems that scale",
+        detail: "design tokens, components, docs",
+      },
+      {
+        icon: BadgeCheck,
+        label: "Ready to ship",
+        detail: "pixel-perfect specs and dev handoff",
+      },
     ],
   },
 ];
 
-// Icon variants keyed by "cardHover" so they respond to the parent card's whileHover
 const iconVariants = {
   Layers: {
     initial: { y: 0, rotate: 0, scale: 1 },
     cardHover: { y: -4, rotate: -8, scale: 1.15 },
-  },
-  Code2: {
-    initial: { y: 0, rotate: 0, scale: 1 },
-    cardHover: { y: -3, rotate: 6, scale: 1.15 },
   },
   Globe: {
     initial: { y: 0, rotate: 0, scale: 1 },
@@ -82,7 +114,7 @@ export function Services() {
           </h2>
         </FadeIn>
 
-        <FadeInStagger className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <FadeInStagger className="grid sm:grid-cols-2 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             const variants = iconVariants[service.animKey];
@@ -91,7 +123,6 @@ export function Services() {
               <motion.div
                 key={service.name}
                 variants={staggerItem}
-                // whileHover propagates "cardHover" down to child motion elements
                 whileHover="cardHover"
                 className="bg-card rounded-2xl border border-border p-6 flex flex-col gap-4 hover:border-primary/30 transition-colors duration-300 cursor-default"
               >
@@ -114,17 +145,37 @@ export function Services() {
                     {service.description}
                   </p>
                 </div>
-                <ul className="flex flex-col gap-1.5 mt-auto pt-2 border-t border-border">
-                  {service.deliverables.map((item) => (
-                    <li
-                      key={item}
-                      className="flex items-center gap-2 text-xs text-muted-foreground"
-                    >
-                      <span className="size-1 rounded-full bg-primary flex-shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
+
+                <motion.ul
+                  className="flex flex-col gap-3 mt-auto pt-4 border-t border-border"
+                  variants={featureContainerVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-40px" }}
+                >
+                  {service.features.map((feature) => {
+                    const FeatureIcon = feature.icon;
+                    return (
+                      <motion.li
+                        key={feature.label}
+                        variants={featureItemVariants}
+                        className="flex items-center gap-3"
+                      >
+                        <div className="size-7 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <FeatureIcon className="size-3.5 text-primary" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-medium text-foreground leading-tight">
+                            {feature.label}
+                          </p>
+                          <p className="text-xs text-muted-foreground leading-tight mt-0.5">
+                            {feature.detail}
+                          </p>
+                        </div>
+                      </motion.li>
+                    );
+                  })}
+                </motion.ul>
               </motion.div>
             );
           })}
