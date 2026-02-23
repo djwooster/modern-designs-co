@@ -263,7 +263,7 @@ export function Contact() {
             >
               {/* Replace YOUR_CAL_LINK with your actual cal.com URL */}
               <a
-                href="https://cal.com/YOUR_CAL_LINK"
+                href="https://cal.com/djwooster"
                 target="_blank"
                 rel="noopener noreferrer"
               >
