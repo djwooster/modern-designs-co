@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedCTA } from "@/components/animated-cta";
+import { HeroDevice } from "@/components/hero-device";
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
 
@@ -33,7 +34,7 @@ const GRID_STREAKS: {
 
 export function Hero() {
   return (
-    <section className="pt-32 pb-20 px-6 lg:px-24 relative overflow-hidden">
+    <section className="pt-50 pb-0 relative overflow-hidden">
       {/* Static grid */}
       <motion.div
         aria-hidden
@@ -99,7 +100,7 @@ export function Hero() {
         )
       )}
 
-      <div className="mx-auto max-w-[1400px] relative">
+      <div className="mx-auto max-w-[1400px] px-6 lg:px-24 relative text-center">
         {/* Eyebrow */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
@@ -121,26 +122,25 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease }}
         >
-          You deserve design worth 
+          You deserve design worth
           <br />
           <span className="text-primary">bragging about.</span>
         </motion.h1>
 
         {/* Sub */}
         <motion.p
-          className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl"
+          className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl mx-auto"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
         >
-          {/* Imagine proudly sharing your website, knowing it perfectly captures 
-your brand. Luxurious design, smooth interactions, and built faster 
-than you thought possible. We build that for you. */}
+          Your time is valuable. We deliver premium design at startup speed—
+          clear communication, efficient process, zero fluff.
         </motion.p>
 
         {/* CTAs */}
         <motion.div
-          className="flex flex-col sm:flex-row items-start gap-3 mb-10"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-10"
           initial={{ opacity: 0, y: 14 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3, ease }}
@@ -165,40 +165,10 @@ than you thought possible. We build that for you. */}
           </Button>
         </motion.div>
 
-        {/* Trust signal */}
-        {/* <motion.p
-          className="text-xs text-muted-foreground mb-14"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.45, ease }}
-        >
-          Honest process · Clean code · No agency jargon
-        </motion.p> */}
-
-        {/* Placeholder — swap with a real product screenshot */}
-        <motion.div
-          className="rounded-2xl overflow-hidden border border-border bg-muted aspect-[16/10] flex items-center justify-center relative"
-          initial={{ opacity: 0, y: 20, scale: 0.98 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 0.8, delay: 0.5, ease }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-secondary to-muted" />
-          <div className="relative z-10 flex flex-col items-center gap-2 text-muted-foreground">
-            <div className="size-12 rounded-xl bg-border/60 flex items-center justify-center">
-              <svg
-                viewBox="0 0 24 24"
-                className="size-5 fill-none stroke-current stroke-[1.5]"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-            </div>
-            <p className="text-sm font-medium">Product screenshot coming soon</p>
-            <p className="text-xs opacity-60">Replace with your best UI or mockup</p>
-          </div>
-        </motion.div>
       </div>
+
+      {/* Full-width hero image */}
+      <HeroDevice />
     </section>
   );
 }

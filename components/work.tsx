@@ -43,7 +43,7 @@ export function Work() {
             Recent work
           </p>
           <h2 className="text-3xl font-semibold tracking-tight">
-            We let the work speak for itself.
+            Some of our favorite recent projects.
           </h2>
         </FadeIn>
 

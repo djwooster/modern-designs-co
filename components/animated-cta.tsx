@@ -19,7 +19,7 @@ export function AnimatedCTA({
   href,
   children,
   variant = "default",
-  size = "lg",
+  size = "sm",
   className,
   target,
   rel,
