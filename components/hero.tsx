@@ -106,12 +106,12 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease }}
         >
-          <Badge
+          {/* <Badge
             variant="secondary"
             className="mb-6 text-xs font-medium tracking-wide rounded-full px-3 py-1"
           >
-            Boutique Web Design & Development Studio
-          </Badge>
+            Web Design Development Studio
+          </Badge> */}
         </motion.div>
 
         {/* Headline */}
@@ -121,7 +121,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1, ease }}
         >
-          You deserve a website worth 
+          You deserve design worth 
           <br />
           <span className="text-primary">bragging about.</span>
         </motion.h1>
@@ -133,10 +133,9 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
         >
-          Your business deserves a digital presence that feels luxurious, moves beautifully, 
-          and launches faster than you thought possible — so you can stop settling and start winning.
-          You get a completely custom website or application that is fully yours. No monthly fees,
-          no platform limits, no compromises.
+          {/* Imagine proudly sharing your website, knowing it perfectly captures 
+your brand. Luxurious design, smooth interactions, and built faster 
+than you thought possible. We build that for you. */}
         </motion.p>
 
         {/* CTAs */}

@@ -1,7 +1,7 @@
 import { Nav } from "@/components/nav";
 import { Hero } from "@/components/hero";
 import { WhyUs } from "@/components/why-us";
-import { WebsiteDesignService, ProductDesignService } from "@/components/services";
+import { Services } from "@/components/services";
 import { Process } from "@/components/process";
 import { Work } from "@/components/work";
 import { Pricing } from "@/components/pricing";
@@ -16,11 +16,8 @@ export default function Home() {
       <div id="hero">
         <Hero />
       </div>
-      <div id="website-design">
-        <WebsiteDesignService />
-      </div>
-      <div id="product-design">
-        <ProductDesignService />
+      <div id="services">
+        <Services />
       </div>
       {/* <div id="why-us">
         <WhyUs />
