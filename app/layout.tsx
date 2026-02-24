@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Lato } from "next/font/google";
+import { Geist, Lato, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -11,6 +11,12 @@ const lato = Lato({
   variable: "--font-lato",
   subsets: ["latin"],
   weight: ["400", "700"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
@@ -32,7 +38,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${lato.variable} font-sans antialiased`}>
+      <body className={`${geistSans.variable} ${lato.variable} ${playfair.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>
