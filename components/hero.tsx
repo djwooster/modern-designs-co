@@ -225,7 +225,7 @@ export function Hero() {
           >
             <span className="inline-flex items-center gap-2">
               <span className="size-3 bg-foreground shrink-0 inline-block" />
-              See More
+              Check us out
             </span>
           </AnimatedCTA>
         </motion.div>
