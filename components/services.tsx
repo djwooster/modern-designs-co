@@ -287,7 +287,11 @@ export function Services() {
     <section className="relative bg-muted overflow-hidden">
       {/* Padded content area */}
       <div className="py-28 lg:py-44 px-6 lg:px-24">
-        <div className="mx-auto max-w-350">
+        <div
+          id="services"
+          className="mx-auto max-w-350"
+          style={{ scrollMarginTop: "80px" }}
+        >
           {/* ── HEADER ───────────────────────────────────────────────── */}
           <div ref={headerRef} className="mb-24 lg:mb-36">
             <motion.p

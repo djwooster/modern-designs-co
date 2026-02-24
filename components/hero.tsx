@@ -118,8 +118,8 @@ export function Hero() {
       // Phase 1: spin fast → decelerate to stop
       await animatePeriod(
         periodRef.current,
-        { rotate: 3600 },
-        { duration: 4.5, ease: [0, 0.85, 0.75, 1] },
+        { rotate: 1800 },
+        { duration: 3, ease: [0, 0.85, 0, 1] },
       );
       if (!active) return;
 
@@ -266,12 +266,16 @@ export function Hero() {
 
         <motion.p
           className="font-semibold text-primary mb-12"
-          style={{ fontSize: "clamp(1rem, 2.2vw, 1.95rem)" }}
+          style={{
+            fontSize: "clamp(1rem, 2.2vw, 1.85rem)",
+            maxWidth: "clamp(320px, 90%, 790px)",
+          }}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.24, ease }}
         >
-          Your creative partner for world class website &amp; product design
+          Your creative partner for world class website design, UX &amp; product
+          design, and custom app development.
         </motion.p>
 
         <motion.div
@@ -287,6 +291,16 @@ export function Hero() {
             iconSize="lg"
             variant="ghost"
             className="text-primary hover:text-primary hover:bg-transparent px-0 text-md"
+            onClick={(e) => {
+              e.preventDefault();
+              const el = document.getElementById("services");
+              if (!el) return;
+              const OFFSET = 80; // px — adjust this value to fine-tune scroll position
+              window.scrollTo({
+                top: el.getBoundingClientRect().top + window.scrollY - OFFSET,
+                behavior: "smooth",
+              });
+            }}
           >
             <span className="inline-flex items-center gap-2">
               <span className="size-3 bg-foreground shrink-0 inline-block" />
