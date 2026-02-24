@@ -15,6 +15,7 @@ interface AnimatedCTAProps {
   rel?: string;
   direction?: "right" | "down";
   iconSize?: "sm" | "base" | "lg";
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export function AnimatedCTA({
@@ -27,6 +28,7 @@ export function AnimatedCTA({
   rel,
   direction = "right",
   iconSize = "base",
+  onClick,
 }: AnimatedCTAProps) {
   const iconClass = iconSize === "sm" ? "size-3" : iconSize === "lg" ? "size-5" : "size-4";
   const iconBox = iconSize === "sm" ? "w-3 h-3" : iconSize === "lg" ? "w-5 h-5" : "w-4 h-4";
@@ -76,6 +78,7 @@ export function AnimatedCTA({
       target={target}
       rel={rel}
       className={cn(buttonVariants({ variant, size }), "rounded-lg", className)}
+      onClick={onClick}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
     >
