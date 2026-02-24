@@ -8,7 +8,7 @@ const ease = [0.21, 0.47, 0.32, 0.98] as const;
 export function HeroDevice() {
   return (
     <motion.div
-      className="w-full mt-50 overflow-hidden"
+      className="w-full overflow-hidden"
       initial={{ opacity: 0, y: 28 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, delay: 0.5, ease }}
