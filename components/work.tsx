@@ -82,12 +82,6 @@ export function Work() {
             </motion.a>
           ))}
         </FadeInStagger>
-
-        <FadeIn delay={0.2} className="mt-8 text-center">
-          <p className="text-xs text-muted-foreground">
-            Full case studies & client references available on request.
-          </p>
-        </FadeIn>
       </div>
     </section>
   );

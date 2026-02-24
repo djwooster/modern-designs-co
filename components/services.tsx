@@ -176,13 +176,11 @@ export function Services() {
       <div className="mx-auto max-w-[1400px]">
         {/* Header */}
         <FadeIn className="mb-16 max-w-2xl">
-          <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-4">
+          <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-4  ">
             What we do
           </p>
           <h2 className="text-3xl lg:text-4xl font-semibold tracking-tight mb-4">
-            We deliver what you need.
-            <br />
-            Fast.
+            We deliver what you need. Fast.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed">
             Premium design with lightning fast execution — delivering you exactly
@@ -197,7 +195,7 @@ export function Services() {
           <div>
             <div className="lg:sticky lg:top-20 flex flex-col">
             {/* Website Design group */}
-            <div className="pb-8">
+            <div className="">
               <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight mb-2">
                 Website Design
               </h3>
@@ -213,7 +211,7 @@ export function Services() {
             </div>
 
             {/* Divider */}
-            <div className="h-px bg-border/60 mb-8" />
+            {/* <div className="h-px bg-border/60 mb-8" /> */}
 
             {/* Product Design group */}
             {/* <div ref={productGroupRef}>
