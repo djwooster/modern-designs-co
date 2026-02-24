@@ -232,7 +232,7 @@ export function Hero() {
       </div>
 
       {/* HeroDevice — fixed 90vw on mobile; scroll-driven 30→90vw on desktop */}
-      <div className="mt-16 lg:mt-60 pb-16 lg:pb-28">
+      <div className="mt-16 lg:mt-40 pb-16 lg:pb-28">
         <div ref={deviceRef} className="flex justify-center">
           <motion.div
             className="rounded-2xl overflow-hidden"
