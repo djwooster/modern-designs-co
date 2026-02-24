@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useAnimate } from "framer-motion";
 import { AnimatedCTA } from "@/components/animated-cta";
 import { HeroDevice } from "@/components/hero-device";
 
@@ -105,6 +105,63 @@ const GRID_STREAKS: {
 
 export function Hero() {
   const deviceRef = useRef<HTMLDivElement>(null);
+  const [periodRef, animatePeriod] = useAnimate();
+
+  useEffect(() => {
+    let active = true;
+
+    const loop = async () => {
+      // Let the hero entrance settle before starting
+      await new Promise<void>((r) => setTimeout(r, 1000));
+      if (!active) return;
+
+      // Phase 1: spin fast → decelerate to stop
+      await animatePeriod(
+        periodRef.current,
+        { rotate: 3600 },
+        { duration: 4.5, ease: [0, 0.85, 0.75, 1] },
+      );
+      if (!active) return;
+
+      // Phase 2a: walk step 1 — hop right and up, then land
+      await animatePeriod(
+        periodRef.current,
+        { x: 18, y: -9 },
+        { duration: 0.5, ease: "easeOut" },
+      );
+      await animatePeriod(
+        periodRef.current,
+        { y: 0 },
+        { duration: 0.5, ease: "easeIn" },
+      );
+      if (!active) return;
+
+      // Phase 2b: walk step 2 — hop right and up, then land
+      await animatePeriod(
+        periodRef.current,
+        { x: 36, y: -9 },
+        { duration: 0.5, ease: "easeOut" },
+      );
+      await animatePeriod(
+        periodRef.current,
+        { y: 0 },
+        { duration: 0.5, ease: "easeIn" },
+      );
+      if (!active) return;
+
+      // Phase 3: return home and shrink to half size
+      await animatePeriod(
+        periodRef.current,
+        { x: 0, y: 0, scale: 0.5 },
+        { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] },
+      );
+    };
+
+    loop();
+    return () => {
+      active = false;
+    };
+  }, []);
   const { scrollYProgress } = useScroll({
     target: deviceRef,
     offset: ["start end", "center center"],
@@ -195,7 +252,15 @@ export function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.08, ease }}
           >
-            Modern Designs Co<span className="text-primary">.</span>
+            Modern Designs Co
+            <span
+              ref={periodRef}
+              aria-hidden
+              className="text-primary"
+              style={{ display: "inline-block" }}
+            >
+              .
+            </span>
           </motion.span>
         </h1>
 
