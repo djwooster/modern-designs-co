@@ -2,7 +2,6 @@ import { Separator } from "@/components/ui/separator";
 
 const links = [
   { label: "Services", href: "#services" },
-  { label: "Process", href: "#process" },
   { label: "Work", href: "#work" },
   { label: "Pricing", href: "#pricing" },
   { label: "About", href: "#about" },

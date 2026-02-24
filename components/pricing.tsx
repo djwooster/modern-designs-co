@@ -29,7 +29,6 @@ type Plan = {
   features: Feature[];
 };
 
-// TODO: Update price values to match your actual starting rates
 const plans: Plan[] = [
   {
     name: "Website Design & Development",
@@ -46,13 +45,9 @@ const plans: Plan[] = [
         icon: Sparkles,
         text: "Beautifully crafted to reflect the true calibre of your brand — nothing off-the-shelf",
       },
-      // {
-      //   icon: BadgeCheck,
-      //   text: "Walk into every sales conversation knowing your site makes the right first impression",
-      // },
       {
         icon: Smile,
-        text: "Low stres for you — we handle every detail so you can stay focused on your work",
+        text: "Low stress for you — we handle every detail so you can stay focused on your work",
       },
       {
         icon: Zap,
@@ -91,47 +86,6 @@ const plans: Plan[] = [
   },
 ];
 
-// Organic blob SVG paths — 200×200 viewBox
-const blobs = [
-  {
-    // Large — top-right, partially off-screen
-    path: "M 100 22 C 126 10 165 28 178 68 C 191 108 174 155 138 170 C 102 185 52 172 28 138 C 4 104 12 55 42 36 C 62 24 74 34 100 22 Z",
-    wrapperClass: "absolute -top-24 -right-24",
-    size: "w-[420px] h-[420px]",
-    animate: { rotate: [0, 6, -3, 2, 0], scale: [1, 1.04, 0.97, 1.02, 1] },
-    transition: { duration: 22, repeat: Infinity, ease: "easeInOut" as const },
-  },
-  {
-    // Medium — bottom-left, partially off-screen
-    path: "M 105 25 C 128 12 158 35 165 72 C 172 109 155 148 122 162 C 89 176 50 168 30 138 C 10 108 15 65 40 44 C 58 28 82 38 105 25 Z",
-    wrapperClass: "absolute -bottom-20 -left-20",
-    size: "w-[340px] h-[340px]",
-    animate: {
-      rotate: [0, -8, 3, -4, 0],
-      scale: [1, 0.96, 1.05, 0.98, 1],
-      y: [0, 10, -6, 4, 0],
-    },
-    transition: {
-      duration: 26,
-      repeat: Infinity,
-      ease: "easeInOut" as const,
-      delay: 5,
-    },
-  },
-  {
-    // Small — center-left, adds mid-section depth
-    path: "M 95 30 C 115 15 150 30 162 65 C 174 100 158 140 128 155 C 98 170 58 162 38 132 C 18 102 22 62 48 42 C 65 28 75 45 95 30 Z",
-    wrapperClass: "absolute top-1/2 -left-16 -translate-y-1/2",
-    size: "w-[240px] h-[240px]",
-    animate: { rotate: [0, 10, -5, 7, 0], y: [0, -10, 8, -4, 0] },
-    transition: {
-      duration: 18,
-      repeat: Infinity,
-      ease: "easeInOut" as const,
-      delay: 10,
-    },
-  },
-];
 
 function FeatureList({ features }: { features: Feature[] }) {
   const ref = useRef<HTMLUListElement>(null);
@@ -174,26 +128,37 @@ function FeatureList({ features }: { features: Feature[] }) {
 export function Pricing() {
   return (
     <section className="py-20 px-6 lg:px-24 relative overflow-hidden">
-      {/* Decorative organic blobs */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        {blobs.map((blob, i) => (
-          <div key={i} className={blob.wrapperClass}>
-            <motion.div
-              className={blob.size}
-              animate={blob.animate}
-              transition={blob.transition}
-            >
-              <svg
-                viewBox="0 0 200 200"
-                xmlns="http://www.w3.org/2000/svg"
-                className="w-full h-full fill-foreground opacity-[0.06]"
-              >
-                <path d={blob.path} />
-              </svg>
-              </motion.div>
-          </div>
-        ))}
-      </div>
+      {/* Diagonal hatching texture */}
+      <motion.div
+        aria-hidden="true"
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(45deg, var(--foreground) 0px, var(--foreground) 1px, transparent 1px, transparent 24px)",
+        }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 0.04 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 1.8, ease: "easeOut" }}
+      />
+      {/* Top fade */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-32 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to bottom, var(--background) 0%, transparent 100%)",
+        }}
+      />
+      {/* Bottom fade */}
+      <div
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to top, var(--background) 0%, transparent 100%)",
+        }}
+      />
 
       <div className="mx-auto max-w-350 relative z-10">
         <FadeIn className="mb-12">
@@ -201,9 +166,7 @@ export function Pricing() {
             Pricing
           </p>
           <h2 className="text-3xl font-semibold tracking-tight mb-3">
-            Design that makes
-            <br />
-            you proud.
+            Design that makes you proud.
           </h2>
           <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
             Every project is scoped to your goals — we&apos;ll give you a

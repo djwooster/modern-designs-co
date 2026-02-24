@@ -1,15 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { FadeIn } from "@/components/fade-in";
 import {
   PhoneOff,
   Rocket,
   Sparkles,
-  Code2,
-  LayoutGrid,
-  BadgeCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -43,34 +40,13 @@ const webDesign: Feature[] = [
   },
 ];
 
-const productDesign: Feature[] = [
-  {
-    icon: Code2,
-    label: "Figma to browser.",
-    detail:
-      "React-ready prototypes with specs that leave nothing to interpretation. Files your engineers can build from on day one.",
-  },
-  {
-    icon: LayoutGrid,
-    label: "Systems that scale.",
-    detail:
-      "Token-based design systems with full component libraries — the kind of foundation that compounds in value as your product grows.",
-  },
-  {
-    icon: BadgeCheck,
-    label: "Ready to ship.",
-    detail:
-      "Pixel-perfect specs, annotated interactions, every edge case covered. Nothing gets lost between design and the final product.",
-  },
-];
-
 // ─── Feature item (static) ─────────────────────────────────────────────────────
 
 function FeatureItem({ feature }: { feature: Feature }) {
   const Icon = feature.icon;
   return (
     <div className="flex gap-4 items-start py-3 px-1">
-      <div className="size-7 rounded-lg bg-muted/60 border border-border/60 flex items-center justify-center flex-shrink-0 mt-0.5">
+      <div className="size-7 rounded-lg bg-muted/60 border border-border/60 flex items-center justify-center shrink-0 mt-0.5">
         <Icon className="size-3.5 text-muted-foreground" strokeWidth={1.5} />
       </div>
       <div>
@@ -164,16 +140,10 @@ export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
 
-  const productGroupRef = useRef<HTMLDivElement>(null);
-  const isProductInView = useInView(productGroupRef, {
-    once: false,
-    margin: "-30% 0px -30% 0px",
-  });
-
   return (
     <section ref={sectionRef} className="relative py-20 px-6 lg:px-24">
       <OrnamentalBrushstroke isInView={isInView} />
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-350">
         {/* Header */}
         <FadeIn className="mb-16 max-w-2xl">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-4  ">
@@ -194,82 +164,33 @@ export function Services() {
           {/* Left: feature list */}
           <div>
             <div className="lg:sticky lg:top-20 flex flex-col">
-            {/* Website Design group */}
-            <div className="">
-              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight mb-2">
-                Website Design
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                Conversion-focused websites built fast — custom code, polished
-                craft, and a live URL in under two weeks.
-              </p>
-              <div className="flex flex-col">
-                {webDesign.map((f) => (
-                  <FeatureItem key={f.label} feature={f} />
-                ))}
+              <div>
+                <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight mb-2">
+                  Website Design
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed mb-5">
+                  Conversion-focused websites built fast — custom code, polished
+                  craft, and a live URL in under two weeks.
+                </p>
+                <div className="flex flex-col">
+                  {webDesign.map((f) => (
+                    <FeatureItem key={f.label} feature={f} />
+                  ))}
+                </div>
               </div>
             </div>
-
-            {/* Divider */}
-            {/* <div className="h-px bg-border/60 mb-8" /> */}
-
-            {/* Product Design group */}
-            {/* <div ref={productGroupRef}>
-              <h3 className="text-2xl lg:text-3xl font-semibold tracking-tight mb-2">
-                Product Design
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-5">
-                Design systems and Figma-to-browser handoffs that give your
-                engineers everything they need to ship on day one.
-              </p>
-              <div className="flex flex-col">
-                {productDesign.map((f) => (
-                  <FeatureItem key={f.label} feature={f} />
-                ))}
-              </div>
-            </div> */}
-            </div>{/* end sticky wrapper */}
-          </div>{/* end left grid item */}
+          </div>
 
           {/* Right: sticky image panel */}
           <div className="hidden lg:block">
             <div className="sticky top-20">
-              <div className="rounded-2xl border border-border overflow-hidden shadow-2xl shadow-black/10 bg-muted/20 aspect-[3/4]">
-                <AnimatePresence mode="wait">
-                  {!isProductInView ? (
-                    <motion.div
-                      key="website"
-                      className="w-full h-full"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80"
-                        alt="Website design example"
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="product"
-                      className="w-full h-full"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                    >
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80"
-                        alt="Product design example"
-                        className="w-full h-full object-cover"
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+              <div className="rounded-2xl border border-border overflow-hidden shadow-2xl shadow-black/10 bg-muted/20 aspect-3/4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=800&q=80"
+                  alt="Website design example"
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           </div>

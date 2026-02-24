@@ -18,7 +18,7 @@ function HamburgerButton({ open, onClick }: { open: boolean; onClick: () => void
       aria-label={open ? "Close menu" : "Open menu"}
       className="relative flex h-10 w-10 items-center justify-center rounded-full md:hidden"
     >
-      <span className="flex flex-col gap-[5px]">
+      <span className="flex flex-col gap-1.25">
         <motion.span
           className="block h-[1.5px] w-5 bg-foreground origin-center"
           animate={open ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
@@ -67,7 +67,7 @@ export function Nav() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
       >
-        <div className="mx-auto max-w-[1500px] px-6 lg:px-24 h-16 flex items-center justify-between relative">
+        <div className="mx-auto max-w-375 px-6 lg:px-24 h-16 flex items-center justify-between relative">
           {/* Logo */}
           <a href="#" className="font-semibold text-base tracking-tight z-10" style={{ fontFamily: "var(--font-lato)" }}>
             modern designs

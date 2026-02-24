@@ -37,7 +37,7 @@ const projects = [
 export function Work() {
   return (
     <section className="py-20 px-6 lg:px-24">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-350">
         <FadeIn className="mb-12">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-3">
             Recent work
@@ -58,7 +58,7 @@ export function Work() {
               className="group bg-card border border-border rounded-2xl overflow-hidden hover:border-primary/30 transition-colors duration-300 cursor-pointer block"
             >
               {/* Project image */}
-              <div className={`aspect-[16/7] bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+              <div className={`aspect-16/7 bg-linear-to-br ${project.gradient} overflow-hidden`}>
                 <img
                   src={project.src}
                   alt={project.name}
@@ -77,7 +77,7 @@ export function Work() {
                     {project.description}
                   </p>
                 </div>
-                <ArrowUpRight className="size-4 text-muted-foreground group-hover:text-primary flex-shrink-0 mt-0.5 transition-colors" />
+                <ArrowUpRight className="size-4 text-muted-foreground group-hover:text-primary shrink-0 mt-0.5 transition-colors" />
               </div>
             </motion.a>
           ))}

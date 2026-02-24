@@ -44,18 +44,18 @@ function ScrollTrack({ steps }: { steps: Step[] }) {
   return (
     <ol ref={ref} className="relative flex flex-col gap-8">
       {/* Track background — runs from center of dot 1 to center of dot 3 */}
-      <div className="absolute left-[7px] top-[11px] bottom-[11px] w-[2px] bg-border" />
+      <div className="absolute left-1.75 top-2.75 bottom-2.75 w-0.5 bg-border" />
       {/* Animated fill */}
       <motion.div
-        className="absolute left-[7px] top-[11px] w-[2px] bg-primary origin-top"
+        className="absolute left-1.75 top-2.75 w-0.5 bg-primary origin-top"
         style={{ scaleY: progress, height: "calc(100% - 22px)" }}
       />
 
       {steps.map((step) => (
         <li key={step.n} className="flex gap-4 items-start">
           {/* Dot — 14px so center sits at left: 7px */}
-          <div className="relative z-10 size-[14px] mt-[3px] flex-shrink-0 rounded-full border border-border bg-background flex items-center justify-center">
-            <div className="size-[5px] rounded-full bg-primary" />
+          <div className="relative z-10 size-3.5 mt-0.75 shrink-0 rounded-full border border-border bg-background flex items-center justify-center">
+            <div className="size-1.25 rounded-full bg-primary" />
           </div>
           <div>
             <div className="flex items-center gap-2 mb-1">
@@ -75,8 +75,8 @@ function ScrollTrack({ steps }: { steps: Step[] }) {
 }
 
 const ImagePlaceholder = ({ label }: { label: string }) => (
-  <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden border border-border bg-muted">
-    <div className="absolute inset-0 bg-gradient-to-br from-secondary to-muted" />
+  <div className="relative w-full aspect-4/3 rounded-2xl overflow-hidden border border-border bg-muted">
+    <div className="absolute inset-0 bg-linear-to-br from-secondary to-muted" />
     <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-muted-foreground">
       <div className="size-12 rounded-xl bg-border/60 flex items-center justify-center">
         <svg
@@ -96,7 +96,7 @@ const ImagePlaceholder = ({ label }: { label: string }) => (
 export function Process() {
   return (
     <section className="py-20 px-6 lg:px-24 bg-secondary/40">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-350">
         <div className="grid sm:grid-cols-2 gap-10 sm:gap-16 items-center">
           {/* Text */}
           <FadeIn className="flex flex-col gap-8">

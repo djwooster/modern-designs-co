@@ -61,17 +61,13 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-
-    // TODO: Wire up to your preferred email API (e.g. Resend, SendGrid)
-    // Example with Resend:
-    //   await fetch("/api/contact", { method: "POST", body: JSON.stringify(form) });
     await new Promise((resolve) => setTimeout(resolve, 1200));
     setStatus("success");
   };
 
   return (
     <section id="contact" className="py-20 px-6 lg:px-24">
-      <div className="mx-auto max-w-[1400px]">
+      <div className="mx-auto max-w-350">
         <FadeIn className="mb-10">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-3">
             Get in touch
@@ -225,7 +221,7 @@ export function Contact() {
                 <motion.span animate={textControls} className="flex items-center gap-2">
                   <span>{status === "loading" ? "Sending…" : "Send inquiry"}</span>
                   {status !== "loading" && (
-                    <span className="relative flex w-4 h-4 overflow-hidden flex-shrink-0">
+                    <span className="relative flex w-4 h-4 overflow-hidden shrink-0">
                       <motion.span
                         animate={arrowControls}
                         className="absolute inset-0 flex items-center justify-center"
@@ -243,7 +239,7 @@ export function Contact() {
         {/* Cal.com alternative */}
         <FadeIn delay={0.15} className="mt-8">
           <div className="flex items-center gap-4 p-5 rounded-2xl border border-dashed border-border bg-card/40">
-            <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+            <div className="size-10 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
               <Calendar className="size-5 text-primary" />
             </div>
             <div className="flex-1 min-w-0">
@@ -259,9 +255,8 @@ export function Contact() {
               variant="secondary"
               size="sm"
               asChild
-              className="rounded-full flex-shrink-0 text-xs font-medium"
+              className="rounded-full shrink-0 text-xs font-medium"
             >
-              {/* Replace YOUR_CAL_LINK with your actual cal.com URL */}
               <a
                 href="https://cal.com/djwooster"
                 target="_blank"

@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { AnimatedCTA } from "@/components/animated-cta";
 import { HeroDevice } from "@/components/hero-device";
 
@@ -100,21 +99,7 @@ export function Hero() {
         )
       )}
 
-      <div className="mx-auto max-w-[1400px] px-6 lg:px-24 relative text-center">
-        {/* Eyebrow */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease }}
-        >
-          {/* <Badge
-            variant="secondary"
-            className="mb-6 text-xs font-medium tracking-wide rounded-full px-3 py-1"
-          >
-            Web Design Development Studio
-          </Badge> */}
-        </motion.div>
-
+      <div className="mx-auto max-w-350 px-6 lg:px-24 relative text-center">
         {/* Headline */}
         <motion.h1
           className="text-3xl sm:text-5xl font-semibold tracking-tight leading-[1.1] mb-6"
@@ -153,9 +138,8 @@ export function Hero() {
             size="lg"
             className="rounded-full font-medium text-muted-foreground hover:text-foreground"
           >
-            {/* Replace YOUR_CAL_LINK with your actual cal.com URL */}
             <a
-              href="https://cal.com/YOUR_CAL_LINK"
+              href="https://cal.com/djwooster"
               target="_blank"
               rel="noopener noreferrer"
             >

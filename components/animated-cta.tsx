@@ -64,7 +64,7 @@ export function AnimatedCTA({
       <motion.span animate={textControls} className="flex items-center gap-2">
         <span>{children}</span>
         {/* overflow-hidden clips arrow as it exits/enters */}
-        <span className="relative flex w-4 h-4 overflow-hidden flex-shrink-0">
+        <span className="relative flex w-4 h-4 overflow-hidden shrink-0">
           <motion.span
             animate={arrowControls}
             className="absolute inset-0 flex items-center justify-center"
