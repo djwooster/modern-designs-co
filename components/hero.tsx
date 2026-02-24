@@ -1,9 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
+import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { AnimatedCTA } from "@/components/animated-cta";
 import { HeroDevice } from "@/components/hero-device";
 
@@ -111,7 +109,16 @@ export function Hero() {
     target: deviceRef,
     offset: ["start end", "center center"],
   });
-  const deviceWidth = useTransform(scrollYProgress, [0, 1], ["30vw", "80vw"]);
+  const deviceWidth = useTransform(scrollYProgress, [0, 1], ["30vw", "90vw"]);
+
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 1023px)");
+    setIsMobile(mq.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
 
   return (
     <section className="pt-40 pb-0 relative overflow-hidden">
@@ -178,100 +185,58 @@ export function Hero() {
         ),
       )}
 
-      {/* Two-column hero content */}
+      {/* Hero content */}
       <div className="mx-auto max-w-350 px-6 lg:px-24 relative">
-        <div className="flex flex-col lg:flex-row items-start justify-between gap-12 lg:gap-0">
-          {/* Left: headline + copy + CTAs */}
-          <div>
-            <h1 className="mb-10">
-              <motion.span
-                className="block text-7xl sm:text-8xl lg:text-9xl font-extrabold leading-[0.88] tracking-tighter text-foreground"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.08, ease }}
-              >
-                Beautiful
-              </motion.span>
-              <motion.span
-                className="block text-7xl sm:text-8xl lg:text-9xl font-extrabold leading-[0.88] tracking-tighter text-foreground"
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.2, ease }}
-              >
-                design
-              </motion.span>
-              <motion.span
-                className="block text-2xl sm:text-3xl lg:text-4xl italic text-primary mt-5"
-                style={{ fontFamily: "var(--font-playfair)" }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.34, ease }}
-              >
-                for everyone.
-              </motion.span>
-            </h1>
-
-            {/* <motion.p
-              className="text-base sm:text-lg text-muted-foreground leading-relaxed mb-8 max-w-md"
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5, ease }}
-            >
-              We make brands and websites people actually talk about. Yours will
-              be one of them.
-            </motion.p> */}
-
-            <motion.div
-              className="flex flex-col sm:flex-row items-start gap-3"
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.62, ease }}
-            >
-              <AnimatedCTA href="#contact" size="lg">
-                Start a project
-              </AnimatedCTA>
-              <Button
-                asChild
-                variant="ghost"
-                size="lg"
-                className="rounded-lg font-medium text-muted-foreground hover:text-foreground"
-              >
-                <a
-                  href="https://cal.com/djwooster"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book a free call
-                </a>
-              </Button>
-            </motion.div>
-          </div>
-
-          {/* Right: hero image */}
-          <motion.div
-            className="w-full lg:w-97.5 shrink-0 aspect-3/4 relative overflow-hidden rounded-2xl"
-            initial={{ opacity: 0, y: 20 }}
+        <h1 className="mb-6">
+          <motion.span
+            className="block font-bold leading-[0.9] tracking-tighter text-foreground"
+            style={{ fontSize: "clamp(3rem, 12vw, 11rem)" }}
+            initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease }}
+            transition={{ duration: 0.7, delay: 0.08, ease }}
           >
-            <Image
-              src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=780&h=1040&fit=crop&q=80"
-              alt="Creative design workspace"
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 390px"
-              priority
-            />
-          </motion.div>
-        </div>
+            Modern Designs Co<span className="text-primary">.</span>
+          </motion.span>
+        </h1>
+
+        <motion.p
+          className="font-semibold text-primary mb-12"
+          style={{ fontSize: "clamp(1rem, 2.2vw, 1.95rem)" }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.24, ease }}
+        >
+          Your creative partner for world class website &amp; product design
+        </motion.p>
+
+        <motion.div
+          className="flex items-start"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4, ease }}
+        >
+          <AnimatedCTA
+            href="#services"
+            size="lg"
+            direction="down"
+            iconSize="lg"
+            variant="ghost"
+            className="text-primary hover:text-primary hover:bg-transparent px-0 text-md"
+          >
+            <span className="inline-flex items-center gap-2">
+              <span className="size-3 bg-foreground shrink-0 inline-block" />
+              See More
+            </span>
+          </AnimatedCTA>
+        </motion.div>
       </div>
 
-      {/* HeroDevice — starts 30vw, grows to 60vw centered as user scrolls */}
-      <div className="mt-30">
+      {/* HeroDevice — fixed 90vw on mobile; scroll-driven 30→90vw on desktop */}
+      <div className="mt-16 lg:mt-60 pb-16 lg:pb-28">
         <div ref={deviceRef} className="flex justify-center">
           <motion.div
             className="rounded-2xl overflow-hidden"
-            style={{ width: deviceWidth }}
+            style={{ width: isMobile ? "90vw" : deviceWidth }}
           >
             <HeroDevice />
           </motion.div>
