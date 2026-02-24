@@ -24,6 +24,8 @@ npm run lint      # Run ESLint
 ### Styling
 - **Tailwind CSS v4** — use canonical class names (e.g. `shrink-0` not `flex-shrink-0`, `bg-linear-to-br` not `bg-gradient-to-br`, `aspect-16/9` not `aspect-[16/9]`).
 - Design tokens come from CSS variables defined in `app/globals.css` (OKLch color space). Always prefer `var(--foreground)` / `text-primary` / `bg-background` over hardcoded colors.
+- Primary color is a deep ocean blue: `oklch(0.45 0.20 232)`. Backgrounds/borders stay warm cream.
+- Buttons use `rounded-lg` (medium rounding) — never `rounded-full` for text buttons.
 - Max content width: `max-w-350` (≈1400px) for most sections, `max-w-375` (≈1500px) for the nav.
 - Consistent horizontal padding: `px-6 lg:px-24`.
 

@@ -214,7 +214,7 @@ export function Contact() {
                 type="submit"
                 size="lg"
                 disabled={status === "loading"}
-                className="rounded-full font-medium w-full sm:w-auto"
+                className="rounded-lg font-medium w-full sm:w-auto"
                 onMouseEnter={onArrowEnter}
                 onMouseLeave={onArrowLeave}
               >
@@ -255,7 +255,7 @@ export function Contact() {
               variant="secondary"
               size="sm"
               asChild
-              className="rounded-full shrink-0 text-xs font-medium"
+              className="rounded-lg shrink-0 text-xs font-medium"
             >
               <a
                 href="https://cal.com/djwooster"

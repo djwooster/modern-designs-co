@@ -3,6 +3,13 @@
 ## Project
 Marketing/portfolio site. Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion v12, shadcn/ui.
 
+## Color Palette (updated 2026-02-23)
+- **Primary**: `oklch(0.45 0.20 232)` — deep ocean blue (was terracotta `oklch(0.47 0.11 32)`)
+- **Primary foreground**: `oklch(0.98 0.004 220)` — cool white for button text
+- **Background/cards/borders**: unchanged (warm cream/beige tones)
+- **Ring**: matches primary `oklch(0.45 0.20 232)`
+- Button radius: `rounded-lg` (was `rounded-full`) — medium rounding
+
 ## Key Files
 - `app/page.tsx` — composes all page sections
 - `app/globals.css` — all CSS variables (OKLch color tokens, border radius)

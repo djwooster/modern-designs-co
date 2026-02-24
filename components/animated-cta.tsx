@@ -57,7 +57,7 @@ export function AnimatedCTA({
       href={href}
       target={target}
       rel={rel}
-      className={cn(buttonVariants({ variant, size }), "rounded-full", className)}
+      className={cn(buttonVariants({ variant, size }), "rounded-lg", className)}
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
     >

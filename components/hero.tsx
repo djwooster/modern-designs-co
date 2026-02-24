@@ -136,7 +136,7 @@ export function Hero() {
             asChild
             variant="ghost"
             size="lg"
-            className="rounded-full font-medium text-muted-foreground hover:text-foreground"
+            className="rounded-lg font-medium text-muted-foreground hover:text-foreground"
           >
             <a
               href="https://cal.com/djwooster"

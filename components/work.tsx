@@ -36,7 +36,7 @@ const projects = [
 
 export function Work() {
   return (
-    <section className="py-20 px-6 lg:px-24">
+    <section className=" px-6 lg:px-24">
       <div className="mx-auto max-w-350">
         <FadeIn className="mb-12">
           <p className="text-xs font-medium tracking-widest uppercase text-muted-foreground mb-3">

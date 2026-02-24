@@ -48,7 +48,7 @@
   --radius-4xl: calc(var(--radius) + 16px);
 }
 
-/* Warm, approachable palette */
+/* Warm cream + deep ocean blue palette */
 :root {
   --radius: 0.75rem;
 
@@ -63,9 +63,9 @@
   --popover: oklch(0.975 0.008 75);
   --popover-foreground: oklch(0.18 0.015 55);
 
-  /* Terracotta/warm rust primary */
-  --primary: oklch(0.47 0.11 32);
-  --primary-foreground: oklch(0.975 0.008 75);
+  /* Deep ocean blue primary */
+  --primary: oklch(0.45 0.20 232);
+  --primary-foreground: oklch(0.98 0.004 220);
 
   /* Warm light secondary */
   --secondary: oklch(0.92 0.016 68);
@@ -82,16 +82,16 @@
   /* Warm borders */
   --border: oklch(0.87 0.018 68);
   --input: oklch(0.87 0.018 68);
-  --ring: oklch(0.47 0.11 32);
+  --ring: oklch(0.45 0.20 232);
 
   --sidebar: oklch(0.96 0.012 68);
   --sidebar-foreground: oklch(0.18 0.015 55);
-  --sidebar-primary: oklch(0.47 0.11 32);
-  --sidebar-primary-foreground: oklch(0.975 0.008 75);
+  --sidebar-primary: oklch(0.45 0.20 232);
+  --sidebar-primary-foreground: oklch(0.98 0.004 220);
   --sidebar-accent: oklch(0.92 0.016 68);
   --sidebar-accent-foreground: oklch(0.18 0.015 55);
   --sidebar-border: oklch(0.87 0.018 68);
-  --sidebar-ring: oklch(0.47 0.11 32);
+  --sidebar-ring: oklch(0.45 0.20 232);
 }
 
 @layer base {
