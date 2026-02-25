@@ -27,7 +27,7 @@ const plans: Plan[] = [
     headingLines: ["Website Design", "& Development"],
     description:
       "For business owners and startups who want a beautiful, professional website — built to reflect their brand and delivered without the headache.",
-    price: "From $3,000",
+    price: "Inquire for pricing",
     priceMeta: "Fixed quote · no surprises",
     cta: "Start a website project",
     variant: "default",
@@ -43,7 +43,7 @@ const plans: Plan[] = [
     headingLines: ["UX & Product", "Design"],
     description:
       "For teams that need a dedicated design partner — someone who's in it with you, not just delivering files.",
-    price: "From $3,500",
+    price: "Inquire for pricing",
     priceMeta: "Per month · pause or cancel anytime",
     cta: "Start a design project",
     variant: "secondary",
@@ -58,13 +58,7 @@ const plans: Plan[] = [
 
 // ─── Plan card ───────────────────────────────────────────────────────────────────
 
-function PlanCard({
-  plan,
-  isFirst,
-}: {
-  plan: Plan;
-  isFirst: boolean;
-}) {
+function PlanCard({ plan, isFirst }: { plan: Plan; isFirst: boolean }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
@@ -190,16 +184,16 @@ export function Pricing() {
       <div className="mx-auto max-w-350">
         {/* Header */}
         <div ref={headerRef} className="mb-16 lg:mb-24">
-          <motion.p
+          {/* <motion.p
             className="text-[10px] font-semibold tracking-[0.45em] uppercase text-muted-foreground mb-5"
             initial={{ opacity: 0, y: 12 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, ease }}
           >
             Pricing
-          </motion.p>
+          </motion.p> */}
 
-          <div className="overflow-hidden mb-1">
+          {/* <div className="overflow-hidden mb-1">
             <motion.h2
               className="font-black tracking-tight leading-[0.87] text-foreground"
               style={{ fontSize: "clamp(3.2rem, 9vw, 9rem)" }}
@@ -220,17 +214,17 @@ export function Pricing() {
             >
               Pricing<span className="text-primary">.</span>
             </motion.h2>
-          </div>
+          </div> */}
 
-          <motion.p
+          {/* <motion.p
             className="text-xl text-muted-foreground leading-relaxed max-w-xl"
             initial={{ opacity: 0, y: 18 }}
             animate={headerInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.28, ease }}
           >
-            Every project is scoped to your goals — we&apos;ll give you a
-            clear, fixed quote before anything begins.
-          </motion.p>
+            Every project is scoped to your goals — we&apos;ll give you a clear,
+            fixed quote before anything begins.
+          </motion.p> */}
         </div>
 
         {/* Plans — two panels with dividers */}
